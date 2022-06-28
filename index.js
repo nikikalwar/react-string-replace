@@ -86,6 +86,12 @@ function replaceString(str, match, fn) {
 }
 
 module.exports = function reactStringReplace(source, match, fn) {
+ 
+  if( typeof match==='function' || fn===undefined){
+    console.warn("Please check the function arguments, either the match string/regex or the function is missing");
+    return false;
+      }
+
   if (!Array.isArray(source)) source = [source];
 
   return flatten(source.map(function(x) {
